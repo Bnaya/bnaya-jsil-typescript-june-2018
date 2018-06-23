@@ -1,3 +1,12 @@
+export type ICreativeData =
+  | IYoutubeCreativeData
+  | IInstagramCreativeData
+  | IFacebookCreativeData;
+
+// the interfaces have 2 common props,
+// creative_network, and date.
+// the type of creative_network is diffrent, so it was serve as a discriminator
+
 export interface IYoutubeCreativeData {
   creative_network: "youtube";
   date: Date;
@@ -13,12 +22,23 @@ export interface IInstagramCreativeData {
   date: Date;
   ig_media_text: string;
   ig_media_image_url: string;
-  ig_media_user_id: string;
-  ig_created_time: Date;
-  ig_media_shortcode: string;
   ig_media_id: string;
   ig_media_type: "video" | "image" | "carousel";
-  ig_user_username: string;
-  ig_user_full_name: string;
-  ig_profile_img_url: string;
+}
+
+export interface IFacebookCreativeData {
+  creative_network: "facebook";
+  date: Date;
+  first_seen: Date;
+  last_seen: Date;
+  fb_post_entity_id: string;
+  fb_post_advertiser_page_pretty_name: string;
+  fb_post_img_url: string;
+  fb_post_caption: string;
+}
+
+export interface networkToInterfaceMap {
+  facebook: IFacebookCreativeData;
+  youtube: IYoutubeCreativeData;
+  instagram: IInstagramCreativeData;
 }
