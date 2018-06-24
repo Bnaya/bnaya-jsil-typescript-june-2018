@@ -1,3 +1,6 @@
+import { Observable } from "rxjs";
+import { filter } from "rxjs/operators";
+
 import {
   ICreativeData,
   IFacebookCreativeData,
@@ -10,9 +13,16 @@ import {
 
 export function facebookOnlyCreatives(creatives: ICreativeData[]) {
   return creatives.filter(
+    // c => c.creative_network === "facebook"
     (c): c is IFacebookCreativeData => c.creative_network === "facebook"
   );
 }
+declare const stream: Observable<ICreativeData>;
+
+// same for rxjs
+export const onlyFacebook = stream.pipe(
+  filter((c): c is IFacebookCreativeData => c.creative_network === "facebook")
+);
 
 // But i'm lazy! i don't want to write a function for each possible network
 function creativesOfNetwork<T extends "facebook" | "instagram" | "youtube">(
@@ -26,6 +36,5 @@ function creativesOfNetwork<T extends "facebook" | "instagram" | "youtube">(
     }
   );
 }
-export const taaaDaaaaa = creativesOfNetwork("youtube", []);
-
+export const taaaDaaaaa = creativesOfNetwork("facebook", []);
 // more about that in the "metaprogramming" section

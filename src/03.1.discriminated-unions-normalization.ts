@@ -10,6 +10,7 @@ import {
 // But also with discrimination
 
 export function getIdForCreative(creative: ICreativeData): string {
+  // using the creative_network literal string as discriminator
   switch (creative.creative_network) {
     case "facebook":
       return creative.fb_post_entity_id;
@@ -24,6 +25,19 @@ export function getIdForCreative(creative: ICreativeData): string {
   }
 }
 
+export function getIdForCreativeUsingInOperator(
+  creative: ICreativeData
+): string {
+  // using in operator as descriminator
+  if ("fb_post_entity_id" in creative) {
+    return creative.fb_post_entity_id;
+  } else if ("ig_media_id" in creative) {
+    return creative.ig_media_id;
+  } else {
+    return creative.yt_video_id;
+  }
+}
+
 interface INormelizedCreative {
   network: string;
   id: string;
@@ -35,6 +49,15 @@ export function normelizeCreative(
   creative: ICreativeData
 ): INormelizedCreative {
   switch (creative.creative_network) {
+    // commnet this out!
+    case "youtube":
+      return {
+        network: creative.creative_network,
+        id: creative.yt_video_id,
+        image: creative.yt_video_thumbnail_img_url,
+        caption: creative.yt_video_title
+      };
+
     case "facebook":
       return {
         network: creative.creative_network,
@@ -49,15 +72,6 @@ export function normelizeCreative(
         id: creative.ig_media_id,
         image: creative.ig_media_image_url,
         caption: creative.ig_media_text
-      };
-
-    // commnet this out!
-    case "youtube":
-      return {
-        network: creative.creative_network,
-        id: creative.yt_video_id,
-        image: creative.yt_video_thumbnail_img_url,
-        caption: creative.yt_video_title
       };
   }
 }

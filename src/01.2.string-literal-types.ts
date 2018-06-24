@@ -15,12 +15,6 @@ let a1: "banana" | "apple" = "banana";
 a1 = "apple";
 // we will cover union types later.
 
-// any type. can be anything
-let anyValue: any = 1;
-anyValue = "2";
-anyValue = {};
-anyValue = fetch();
-
 // ---------
 
 // Some use cases
@@ -28,7 +22,7 @@ anyValue = fetch();
 import * as React from "react";
 
 // also auto-complete!
-const textAlign: React.CSSProperties["textAlign"] = "center";
+const textAlign: React.CSSProperties["textAlign"] =
 const textAlignBad: React.CSSProperties["textAlign"] = "not-a-valid-value";
 
 // You can use them instead of enums/string enums. more human readable,

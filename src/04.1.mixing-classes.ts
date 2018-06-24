@@ -5,13 +5,23 @@
 // MDN link:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Mix-ins
 
+// this is not (!!!) multiple inheritance
 // it's like default implementation in java, traits in php, etc
 
 type ConstructorType<T> = new (...args: any[]) => T;
 
 class Animal {}
 class Mammal extends Animal {}
-class Dog extends Mammal {}
+class Mouse extends Mammal {}
+
+// as plain js
+function teachToFlyJavascript(classToTeach: any) {
+  return class extends classToTeach {
+    public ibelieveICanfly() {
+      return "fly!";
+    }
+  };
+}
 
 function teachToFly<TC extends ConstructorType<{}>>(classToTeach: TC) {
   return class extends classToTeach {
@@ -21,11 +31,8 @@ function teachToFly<TC extends ConstructorType<{}>>(classToTeach: TC) {
   };
 }
 
-const Bat = teachToFly(
-  class extends Mammal {
-    public confuseRay() {}
-  }
-);
+const Bird = teachToFly(Animal);
+const Bat = teachToFly(Mouse);
 
 const bat = new Bat();
 bat.ibelieveICanfly();

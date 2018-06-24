@@ -8,7 +8,7 @@ import { ICreativeData } from "./interfaces";
 const creativesArray: Array<ICreativeData> = [];
 
 // generic sort helper
-export function createComperator<T>(
+export function createComparator<T>(
   valueGetter: (v: T) => number,
   direction: "asc" | "desc"
 ) {
@@ -28,7 +28,7 @@ export function createComperator<T>(
 
 // I need to specify the generic
 // https://www.typescriptlang.org/docs/handbook/type-inference.html#contextual-type
-const comperator = createComperator<ICreativeData>(
+const comparator = createComparator<ICreativeData>(
   creative => creative.date.getTime(),
   "desc"
 );
@@ -37,7 +37,7 @@ const comperator = createComperator<ICreativeData>(
 // we don't have to spesify the type when its on the call site.
 // typescript infer figures its out
 creativesArray.sort(
-  createComperator(creative => creative.date.getTime(), "desc")
+  createComparator(creative => creative.date.getTime(), "desc")
 );
 
 // ------
@@ -49,4 +49,4 @@ function sortByTime<T extends { time: Date }>(a: T, b: T) {
 }
 
 [{ a: 1 }].sort(sortByTime);
-[{ a: 1, date: new Date() }, { bla: 2, date: new Date() }].sort(sortByTime);
+[{ a: 1, time: new Date() }, { bla: 2, time: new Date() }].sort(sortByTime);
