@@ -28,16 +28,39 @@ export function createComparator<T>(
 
 // I need to specify the generic
 // https://www.typescriptlang.org/docs/handbook/type-inference.html#contextual-type
-const comparator = createComparator<ICreativeData>(
-  creative => creative.date.getTime(),
-  "desc"
-);
+const comparator = createComparator<ICreativeData>(creative => {
+  switch (creative.creative_network) {
+    case "facebook":
+      return creative.fb_post_scheduled_time.getTime();
+
+    case "instagram":
+      return creative.ig_upload_time.getTime();
+
+    // commnet this out!
+    // typescript helps me to make sure i've coverd all of the possible cases
+    case "youtube":
+      return creative.yt_last_seen.getTime();
+  }
+}, "desc");
 
 // Or... checkout the contextual types!
 // we don't have to spesify the type when its on the call site.
 // typescript infer figures its out
 creativesArray.sort(
-  createComparator(creative => creative.date.getTime(), "desc")
+  createComparator(creative => {
+    switch (creative.creative_network) {
+      case "facebook":
+        return creative.fb_post_scheduled_time.getTime();
+
+      case "instagram":
+        return creative.ig_upload_time.getTime();
+
+      // commnet this out!
+      // typescript helps me to make sure i've coverd all of the possible cases
+      case "youtube":
+        return creative.yt_last_seen.getTime();
+    }
+  }, "desc")
 );
 
 // ------

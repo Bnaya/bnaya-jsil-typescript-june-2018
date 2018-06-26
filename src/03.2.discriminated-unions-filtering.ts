@@ -13,8 +13,8 @@ import {
 
 export function facebookOnlyCreatives(creatives: ICreativeData[]) {
   return creatives.filter(
-    // c => c.creative_network === "facebook"
-    (c): c is IFacebookCreativeData => c.creative_network === "facebook"
+    c => c.creative_network === "facebook"
+    // (c): c is IFacebookCreativeData => c.creative_network === "facebook"
   );
 }
 declare const stream: Observable<ICreativeData>;
@@ -36,5 +36,5 @@ function creativesOfNetwork<T extends "facebook" | "instagram" | "youtube">(
     }
   );
 }
-export const taaaDaaaaa = creativesOfNetwork("facebook", []);
+export const taaaDaaaaa = creativesOfNetwork("youtube", []);
 // more about that in the "metaprogramming" section

@@ -9,6 +9,7 @@ export type ICreativeData =
 
 export interface IYoutubeCreativeData {
   creative_network: "youtube";
+  yt_last_seen: Date;
   date: Date;
   yt_video_description: string;
   yt_video_id: string;
@@ -18,6 +19,7 @@ export interface IYoutubeCreativeData {
 }
 
 export interface IInstagramCreativeData {
+  ig_upload_time: Date;
   creative_network: "instagram";
   date: Date;
   ig_media_text: string;
@@ -28,6 +30,7 @@ export interface IInstagramCreativeData {
 
 export interface IFacebookCreativeData {
   creative_network: "facebook";
+  fb_post_scheduled_time: Date;
   date: Date;
   first_seen: Date;
   last_seen: Date;
