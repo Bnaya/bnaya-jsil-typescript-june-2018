@@ -6,6 +6,7 @@ import { ICreativeData } from "./interfaces";
 
 // Arrays are generics
 const creativesArray: Array<ICreativeData> = [];
+const creativesArray1: ICreativeData[] = [];
 
 // generic sort helper
 export function createComparator<T>(
@@ -36,8 +37,6 @@ const comparator = createComparator<ICreativeData>(creative => {
     case "instagram":
       return creative.ig_upload_time.getTime();
 
-    // commnet this out!
-    // typescript helps me to make sure i've coverd all of the possible cases
     case "youtube":
       return creative.yt_last_seen.getTime();
   }
