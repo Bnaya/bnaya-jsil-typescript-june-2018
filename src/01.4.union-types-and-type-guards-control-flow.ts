@@ -32,14 +32,6 @@ export function foo2(e: HTMLFormElement | HTMLLIElement) {
   }
 }
 
-// typeguard can also be used to upgrade instance to a sub class instance
-// HTMLFormElement extends Element, so e might be a HTMLFormElement
-export function foo3(e: Element) {
-  if (e instanceof HTMLFormElement) {
-    e.checkValidity();
-  }
-}
-
 // custom typeguards, using the `is` keyword
 export function validateFacebookCreative(
   userInput: any
