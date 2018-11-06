@@ -1,7 +1,7 @@
 import { IFacebookCreativeData, IYoutubeCreativeData } from "./interfaces";
 // http://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types
 
-// So do how we use a variable with multiple types?
+// So how do we use a variable with multiple types?
 // Using built-in typeguard and control flow analysis,
 // typescript allows us to do that safely
 export function foo(p: string | number) {

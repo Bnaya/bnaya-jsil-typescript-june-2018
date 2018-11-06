@@ -8,6 +8,7 @@ import {
 
 // TypeScript control flow analysis can "narrow down" not only with typeguards,
 // But also with discrimination
+// also called tagged union
 
 export function getIdForCreative(creative: ICreativeData): string {
   // using the creative_network literal string as discriminator

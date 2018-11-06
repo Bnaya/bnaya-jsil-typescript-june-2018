@@ -4,7 +4,8 @@ import {
   IInstagramCreativeData,
   IYoutubeCreativeData
 } from "./interfaces";
-import { getIdForCreative } from "./03.1.discriminated-unions-normalization";
+import { getIdForCreative } from "./02.2.discriminated-unions-normalization";
+// import { getIdForCreative } from "./03.1.discriminated-unions-normalization";
 
 function FbCreative({ c }: { c: IFacebookCreativeData }) {
   return (
