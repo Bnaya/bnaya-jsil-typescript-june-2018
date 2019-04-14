@@ -4,12 +4,14 @@ interface A {
 }
 
 function foo1(p: A): A {
-  return {
+  const asd = {
     a: 1,
     b: "1",
     // error?
     c: ""
   };
+
+  return asd;
 }
 
 foo1({
@@ -27,3 +29,5 @@ const fooObject = {
 
 // no error ?!?! even thu we have extra prop.
 foo1(fooObject);
+
+const a = Object.keys(fooObject);

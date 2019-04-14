@@ -19,7 +19,7 @@ class Mouse extends Mammal {}
 // as plain js
 function teachToFlyJavascript(classToTeach: any) {
   return class extends classToTeach {
-    public ibelieveICanfly() {
+      ibelieveICanfly() {
       return "fly!";
     }
   };
@@ -40,6 +40,6 @@ const bat = new Bat();
 bat.ibelieveICanfly();
 
 // it will look nicer with pipeline operator!
-// const Bird = Animal -> teachToFly -> ...
+// const Bird = Animal |> teachToFly;
 
 export {};

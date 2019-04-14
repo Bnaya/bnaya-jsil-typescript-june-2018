@@ -7,6 +7,9 @@ export interface IFooRegularInterface {
   bar: number;
 }
 
+// declare class that should implament the interface
+class FooClass implements IFooRegularInterface {}
+
 // anonymous interface
 export const foo: {
   foo: string;
@@ -29,6 +32,8 @@ export const lookAtMee = {
   b: 5,
   c: Symbol.for("lookAtMee")
 };
+
+type Foo1 = typeof lookAtMee;
 
 // you can use the interface keyword to declare function type
 // this one of the forms to declare a function type. (as type for callback etc)

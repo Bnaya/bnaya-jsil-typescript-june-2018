@@ -22,7 +22,7 @@ a1 = "apple";
 import * as React from "react";
 
 // also auto-complete!
-const textAlign: React.CSSProperties["textAlign"] = "center";
+const textAlign: React.CSSProperties["textAlign"] = "left";
 const textAlignBad: React.CSSProperties["textAlign"] = "not-a-valid-value";
 
 // You can use them instead of enums/string enums. more human readable,

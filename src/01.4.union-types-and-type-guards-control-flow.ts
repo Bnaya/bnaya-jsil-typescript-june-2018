@@ -34,7 +34,7 @@ export function foo2(e: HTMLFormElement | HTMLLIElement) {
 
 // custom typeguards, using the `is` keyword
 export function validateFacebookCreative(
-  userInput: any
+  userInput: unknown
 ): userInput is IFacebookCreativeData {
   // some validation logic
   return true;
